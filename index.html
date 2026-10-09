@@ -19,15 +19,17 @@
             
             /* Fixed background image */
             background-image: url("memee.svg");
-            background-size: contain;
+            background-size: 100% auto;
             background-repeat: no-repeat;
             background-position: center top;
-            background-attachment: fixed;
             
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 30px;
+            align-items: flex-start;
+            padding-top: 350px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-bottom: 30px;
         }
 
         .container {
@@ -36,7 +38,6 @@
             text-align: center;
             position: relative;
             z-index: 1;
-            margin-top: 250px; /* Push content below the background heading */
         }
 
         .subtitle {
@@ -137,11 +138,9 @@
         @media (max-width: 600px) {
             body {
                 background-size: cover;
-                padding: 20px;
-            }
-
-            .container {
-                margin-top: 200px; /* Adjust for mobile */
+                padding-top: 280px;
+                padding-left: 20px;
+                padding-right: 20px;
             }
 
             .subtitle {
@@ -287,16 +286,7 @@
             const imageList = moods[currentMood];
             const imagePath = imageList[currentImage];
 
-            console.log("Loading image:", imagePath);
             image.src = imagePath;
-
-            image.onload = function() {
-                console.log("SUCCESS:", imagePath);
-            };
-
-            image.onerror = function() {
-                console.error("ERROR: Could not load", imagePath);
-            };
 
             const moodName = currentMood.charAt(0).toUpperCase() + currentMood.slice(1);
             document.getElementById("imageTitle").innerText = "Feeling " + moodName + "?";
