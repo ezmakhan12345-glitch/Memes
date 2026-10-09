@@ -1,268 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How Are You Feeling?</title>
-
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-            
-            /* Fixed background image */
-            background-image: url("memee.svg");
-            background-size: 100% auto;
-            background-repeat: no-repeat;
-            background-position: center top;
-            
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 350px;
-            padding-left: 30px;
-            padding-right: 30px;
-            padding-bottom: 30px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 900px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .subtitle {
-            color: #777;
-            font-size: 25px;
-            margin-bottom: 35px;
-        }
-
-        .moods {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .mood-button {
-            border: none;
-            padding: 25px 45px;
-            border-radius: 70px;
-            background: rgb(255, 68, 130);
-            color: #1c1b1b;
-            font-size: 19px;
-            font-weight: bold;
-            font-family: Calibri, sans-serif;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: 0.3s;
-        }
-
-        .mood-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-        }
-
-        .mood-button.active {
-            background: #6c4cc4;
-            color: white;
-        }
-
-        #imageSection {
-            display: none;
-        }
-
-        #imageSection.show {
-            display: block;
-        }
-
-        .image-container {
-            width: auto;
-            max-width: 100%;
-            height: auto;
-            margin: auto;
-            background: white;
-            padding: 12px;
-            border-radius: 25px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        #moodImage {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 18px;
-            transition: opacity 0.3s;
-        }
-
-        .image-title {
-            margin-top: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #302344;
-        }
-
-        .image-counter {
-            margin-top: 8px;
-            color: #888;
-            font-size: 14px;
-        }
-
-        .next-button {
-            margin-top: 20px;
-            padding: 13px 25px;
-            border: none;
-            border-radius: 30px;
-            background: #302344;
-            color: white;
-            cursor: pointer;
-            font-size: 15px;
-            transition: 0.3s;
-        }
-
-        .next-button:hover {
-            background: #6c4cc4;
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 600px) {
-            body {
-                background-size: cover;
-                padding-top: 280px;
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-
-            .subtitle {
-                font-size: 18px;
-            }
-
-            .image-container {
-                height: auto;
-            }
-
-            .mood-button {
-                padding: 12px 18px;
-                font-size: 14px;
-            }
-        }
+        /* Custom font if you want to keep Calibri for buttons */
+        .font-calibri { font-family: Calibri, sans-serif; }
     </style>
 </head>
 
-<body>
-    <div class="container">
-        <p class="subtitle">
+<body class="min-h-screen bg-gray-50 flex flex-col items-center py-10 px-4">
+
+    <!-- 
+      THE FIX: Using an <img> tag instead of background-image.
+      This takes up real space in the layout so content won't overlap it.
+    -->
+    <img 
+        src="memee.svg" 
+        alt="How are you feeling today header" 
+        class="w-full max-w-4xl mb-8"
+    >
+
+    <div class="w-full max-w-3xl text-center">
+        
+        <p class="text-gray-500 text-xl md:text-2xl mb-10">
             Choose a mood to explore the meme world :)
         </p>
 
-        <div class="moods">
-            <button class="mood-button" onclick="selectMood('lazy', this)">
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button class="mood-button bg-[#ff4482] text-[#1c1b1b] rounded-full px-10 py-6 font-bold text-lg font-calibri shadow-md hover:-translate-y-1 hover:shadow-lg transition-all duration-300" onclick="selectMood('lazy', this)">
                 Lazy -.-
             </button>
 
-            <button class="mood-button" onclick="selectMood('happy', this)">
+            <button class="mood-button bg-[#ff4482] text-[#1c1b1b] rounded-full px-10 py-6 font-bold text-lg font-calibri shadow-md hover:-translate-y-1 hover:shadow-lg transition-all duration-300" onclick="selectMood('happy', this)">
                 Happy :D
             </button>
 
-            <button class="mood-button" onclick="selectMood('bored', this)">
+            <button class="mood-button bg-[#ff4482] text-[#1c1b1b] rounded-full px-10 py-6 font-bold text-lg font-calibri shadow-md hover:-translate-y-1 hover:shadow-lg transition-all duration-300" onclick="selectMood('bored', this)">
                 Bored ._.
             </button>
 
-            <button class="mood-button" onclick="selectMood('sad', this)">
+            <button class="mood-button bg-[#ff4482] text-[#1c1b1b] rounded-full px-10 py-6 font-bold text-lg font-calibri shadow-md hover:-translate-y-1 hover:shadow-lg transition-all duration-300" onclick="selectMood('sad', this)">
                 Sad :(
             </button>
 
-            <button class="mood-button" onclick="selectMood('angry', this)">
+            <button class="mood-button bg-[#ff4482] text-[#1c1b1b] rounded-full px-10 py-6 font-bold text-lg font-calibri shadow-md hover:-translate-y-1 hover:shadow-lg transition-all duration-300" onclick="selectMood('angry', this)">
                 Angry -_-
             </button>
         </div>
 
-        <div id="imageSection">
-            <div class="image-container">
-                <img id="moodImage" src="" alt="Mood image">
+        <div id="imageSection" class="hidden">
+            <div class="bg-white p-3 rounded-3xl shadow-xl max-w-2xl mx-auto">
+                <img id="moodImage" src="" alt="Mood image" class="w-full h-auto rounded-2xl object-cover transition-opacity duration-300">
             </div>
 
-            <div id="imageTitle" class="image-title"></div>
-            <div id="imageCounter" class="image-counter"></div>
+            <div id="imageTitle" class="mt-6 text-2xl font-bold text-[#302344]"></div>
+            <div id="imageCounter" class="mt-2 text-gray-400 text-sm"></div>
 
-            <button class="next-button" onclick="nextImage()">
-                Show me another one →
+            <button class="next-button mt-6 px-6 py-3 bg-[#302344] text-white rounded-full cursor-pointer text-sm hover:bg-[#6c4cc4] hover:-translate-y-0.5 transition-all duration-300" onclick="nextImage()">
+                Show me another one &rarr;
             </button>
         </div>
+
     </div>
 
     <script>
         const moods = {
-            lazy: [
-                "images/lazy/lazy 1.jpg",
-                "images/lazy/lazy 2.jpg",
-                "images/lazy/lazy 3.jpg",
-                "images/lazy/lazy 4.jpg",
-                "images/lazy/lazy 5.jpg",
-                "images/lazy/lazy 6.jpg",
-                "images/lazy/lazy 7.jpg",
-                "images/lazy/lazy 8.jpg",
-                "images/lazy/lazy 9.jpg",
-                "images/lazy/lazy 10.jpg"
-            ],
-            happy: [
-                "images/happy/happy 1.jpg",
-                "images/happy/happy 2.jpg",
-                "images/happy/happy 3.jpg",
-                "images/happy/happy 4.jpg",
-                "images/happy/happy 5.jpg",
-                "images/happy/happy 6.jpg",
-                "images/happy/happy 7.jpg",
-                "images/happy/happy 8.jpg",
-                "images/happy/happy 9.jpg",
-                "images/happy/happy 10.jpg"
-            ],
-            bored: [
-                "images/bored/bored 1.jpg",
-                "images/bored/bored 2.jpg",
-                "images/bored/bored 3.jpg",
-                "images/bored/bored 4.jpg",
-                "images/bored/bored 5.jpg",
-                "images/bored/bored 6.jpg",
-                "images/bored/bored 7.jpg",
-                "images/bored/bored 8.jpg",
-                "images/bored/bored 9.jpg",
-                "images/bored/bored 10.jpg"
-            ],
-            sad: [
-                "images/sad/sad 1.jpg",
-                "images/sad/sad 2.jpg",
-                "images/sad/sad 3.jpg",
-                "images/sad/sad 4.jpg",
-                "images/sad/sad 5.jpg",
-                "images/sad/sad 6.jpg",
-                "images/sad/sad 7.jpg",
-                "images/sad/sad 8.jpg",
-                "images/sad/sad 9.jpg",
-                "images/sad/sad 10.jpg"
-            ],
-            angry: [
-                "images/angry/angry 1.jpg",
-                "images/angry/angry 2.jpg",
-                "images/angry/angry 3.jpg",
-                "images/angry/angry 4.jpg",
-                "images/angry/angry 5.jpg",
-                "images/angry/angry 6.jpg",
-                "images/angry/angry 7.jpg",
-                "images/angry/angry 8.jpg",
-                "images/angry/angry 9.jpg",
-                "images/angry/angry 10.jpg"
-            ]
+            lazy: ["images/lazy/lazy 1.jpg", "images/lazy/lazy 2.jpg", "images/lazy/lazy 3.jpg", "images/lazy/lazy 4.jpg", "images/lazy/lazy 5.jpg", "images/lazy/lazy 6.jpg", "images/lazy/lazy 7.jpg", "images/lazy/lazy 8.jpg", "images/lazy/lazy 9.jpg", "images/lazy/lazy 10.jpg"],
+            happy: ["images/happy/happy 1.jpg", "images/happy/happy 2.jpg", "images/happy/happy 3.jpg", "images/happy/happy 4.jpg", "images/happy/happy 5.jpg", "images/happy/happy 6.jpg", "images/happy/happy 7.jpg", "images/happy/happy 8.jpg", "images/happy/happy 9.jpg", "images/happy/happy 10.jpg"],
+            bored: ["images/bored/bored 1.jpg", "images/bored/bored 2.jpg", "images/bored/bored 3.jpg", "images/bored/bored 4.jpg", "images/bored/bored 5.jpg", "images/bored/bored 6.jpg", "images/bored/bored 7.jpg", "images/bored/bored 8.jpg", "images/bored/bored 9.jpg", "images/bored/bored 10.jpg"],
+            sad: ["images/sad/sad 1.jpg", "images/sad/sad 2.jpg", "images/sad/sad 3.jpg", "images/sad/sad 4.jpg", "images/sad/sad 5.jpg", "images/sad/sad 6.jpg", "images/sad/sad 7.jpg", "images/sad/sad 8.jpg", "images/sad/sad 9.jpg", "images/sad/sad 10.jpg"],
+            angry: ["images/angry/angry 1.jpg", "images/angry/angry 2.jpg", "images/angry/angry 3.jpg", "images/angry/angry 4.jpg", "images/angry/angry 5.jpg", "images/angry/angry 6.jpg", "images/angry/angry 7.jpg", "images/angry/angry 8.jpg", "images/angry/angry 9.jpg", "images/angry/angry 10.jpg"]
         };
 
         let currentMood = "";
@@ -272,12 +85,13 @@
             currentMood = mood;
             currentImage = 0;
 
-            document.querySelectorAll(".mood-button").forEach(function(btn) {
-                btn.classList.remove("active");
-            });
+            document.querySelectorAll(".mood-button").forEach(btn => btn.classList.remove("bg-[#6c4cc4]", "text-white", "active"));
+            document.querySelectorAll(".mood-button").forEach(btn => btn.classList.add("bg-[#ff4482]", "text-[#1c1b1b]"));
 
-            button.classList.add("active");
-            document.getElementById("imageSection").classList.add("show");
+            button.classList.remove("bg-[#ff4482]", "text-[#1c1b1b]");
+            button.classList.add("bg-[#6c4cc4]", "text-white", "active");
+
+            document.getElementById("imageSection").classList.remove("hidden");
             showImage();
         }
 
@@ -295,14 +109,9 @@
 
         function nextImage() {
             if (!currentMood) return;
-
             const imageList = moods[currentMood];
             currentImage++;
-
-            if (currentImage >= imageList.length) {
-                currentImage = 0;
-            }
-
+            if (currentImage >= imageList.length) currentImage = 0;
             showImage();
         }
     </script>
