@@ -31,16 +31,6 @@
     width: 100%;
 }
 
-/* ===== MOBILE ONLY ===== */
-@media (max-width: 768px) {
-    .hero {
-        background-size: contain;        /* ⭐ fits whole image, no cropping */
-        background-position: center top; /* keeps title area visible */
-        background-repeat: no-repeat;
-        background-color: #f0f0f0;       /* fills empty space if any */
-        background-attachment: scroll;
-        min-height: 100svh;
-    }
 }
             justify-content: center;
             align-items: center;
@@ -189,6 +179,18 @@
 
             transform: translateY(-2px);
         }
+
+
+        /* ===== MOBILE ONLY ===== */
+@media (max-width: 768px) {
+    .hero {
+        background-size: contain;        /* ⭐ fits whole image, no cropping */
+        background-position: center top; /* keeps title area visible */
+        background-repeat: no-repeat;
+        background-color: #f0f0f0;       /* fills empty space if any */
+        background-attachment: scroll;
+        min-height: 100svh;
+    }
 
         @media (max-width: 600px) {
 
