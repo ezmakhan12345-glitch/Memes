@@ -20,10 +20,28 @@
 
             font-family: Arial, sans-serif;
             background-image: url("memee.svg");
-            background-size: cover;
-            background-position: center;
+            /* ===== DESKTOP (unchanged) ===== */
+.hero {
+    background-image: url("memee.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
 
-            display: flex;
+/* ===== MOBILE ONLY ===== */
+@media (max-width: 768px) {
+    .hero {
+        background-size: contain;        /* ⭐ fits whole image, no cropping */
+        background-position: center top; /* keeps title area visible */
+        background-repeat: no-repeat;
+        background-color: #f0f0f0;       /* fills empty space if any */
+        background-attachment: scroll;
+        min-height: 100svh;
+    }
+}
             justify-content: center;
             align-items: center;
             padding: 30px;
